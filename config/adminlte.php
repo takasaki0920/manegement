@@ -63,8 +63,8 @@ return [
     |
     */
 
-    'logo' => '<b>商品管理</b>',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>BabyBoon</b>',
+    'logo_img' => 'img/logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -187,14 +187,14 @@ return [
     */
 
     'classes_body' => '',
-    'classes_brand' => '',
-    'classes_brand_text' => '',
-    'classes_content_wrapper' => '',
-    'classes_content_header' => '',
-    'classes_content' => '',
+    'classes_brand' => '',//商品管理システムのバックカラー
+    'classes_brand_text' => '',//商品管理システムのテキストのバックカラー
+    'classes_content_wrapper' => 'content_wrapper',
+    'classes_content_header' => '',//ボディのBabyBoonのバックカラー
+    'classes_content' => '',//mainのバックカラー
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
-    'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_sidebar_nav' => '',//サイドバーのテキストのバックカラー
+    'classes_topnav' => 'navbar-white navbar-light',//topナビのバックカラー
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -290,10 +290,31 @@ return [
     */
 
     'menu' => [
+        
         [
-            'text' => '商品一覧',
+            'text' => 'Baby',
+            'url'  => 'home/all_item',
+            'icon' => 'fas fa-baby-carriage',
+        ],
+        [
+            'text' => 'Goods',
             'url'  => 'items',
-            'icon' => 'fas fa-gamepad',
+            'icon' => 'fas fa-gift',
+        ],
+        [
+            'text' => 'Boy',
+            'url'  => 'items',
+            'icon' => 'fas fa-star',
+        ],
+        [
+            'text' => 'Girl',
+            'url'  => 'items',
+            'icon' => 'fas fa-star',
+        ],
+        [
+            'text' => '社員管理システム',
+            'url'  => 'user/user_list',
+            'icon' => 'fas fa-info',
         ],
 
         // AdminLTEデフォルト

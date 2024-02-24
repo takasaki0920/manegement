@@ -1,24 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', '商品一覧')
+@section('title', '全商品一覧')
 
 @section('content_header')
-    <h1>商品一覧</h1>
-@stop
+    <h1>全商品一覧</h1>
+    @stop
 
 @section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">商品一覧</h3>
-                    <div class="card-tools">
-                        <div class="input-group input-group-sm">
-                            <div class="input-group-append">
-                                <a href="{{ url('items/add') }}" class="btn btn-default">商品登録</a>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="card-title">全商品一覧</h3>
+                    
                 </div>
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
@@ -26,7 +20,6 @@
                             <tr>
                                 <th>ID</th>
                                 <th>商品名</th>
-                                <th>画像</th>
                                 <th>商品情報</th>
                                 <th>サイズ</th>
                                 <th>アイテム種別</th>
@@ -40,10 +33,6 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>
-                                        <img src="{{ asset($item->image) }}" style="width: 100px; height:100px;">
-                                    </td>
-                                    <td>{{ $item->title }}</td>
                                     <td>{{ $item->detail }}</td>
                                     <td>{{ $item->size }}</td>
                                     <td>{{ $item->item_category }}</td>
@@ -55,6 +44,7 @@
                         </tbody>
                     </table>
                 </div>
+                {{ $items->links() }}
             </div>
         </div>
     </div>

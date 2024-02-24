@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned()->index();
-            $table->string('name', 100)->index();
-            $table->string('type', 100)->nullable();
-            $table->string('detail', 500)->nullable();
+            $table->string('image');
+            $table->string('name', 100);
+            $table->string('detail', 500);
+            $table->string('size');
+            $table->string('item_category', 100);
+            $table->string('category', 100);
+            $table->integer('price')->unsigned();
+            $table->integer('stock')->unsigned();
             $table->timestamps();
         });
     }

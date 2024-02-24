@@ -1,0 +1,14 @@
+.content_wrapper {
+    background-color: rgb(247, 219, 166);
+}
+
+.sidebar-dark-primary {
+    background-color: rgb(83, 64, 38) !important;
+   
+}
+
+.sidebar p{
+    color:rgb(249, 248, 247) !important;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
