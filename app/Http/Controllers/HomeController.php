@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Consts\CategoryConst;
+use App\Consts\SizeConst;
+use App\Consts\ItemCategoryConst;
 
 class HomeController extends Controller
 {
@@ -31,24 +34,50 @@ class HomeController extends Controller
     {
         // 商品一覧取得
        
-        $items = Item::paginate(5);
-        return view('home.all_item',[ 'items' => $items]);
+        $items = Item::paginate(10);
+
+        $categorys = CategoryConst::CATEGORYS;
+        $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
+        $sizes = SizeConst::SIZES;
+        return view('home.all_item',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
     }
 
-    // public function goods_item()
-    // {
-    //     return view('home.goods_item');
-    // }
+    public function goods_list()
+    {
+        // 商品一覧取得
+       
+        $items = Item::paginate(10);
 
-    // public function boys_item()
-    // {
-    //     return view('home.boys_item');
-    // }
+        $categorys = CategoryConst::CATEGORYS;
+        $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
+        $sizes = SizeConst::SIZES;
+        return view('home.goods_list',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
+    }
 
-    // public function girls_item()
-    // {
-    //     return view('home.girls_item');
-    // }
+    public function boys_list()
+    {
+        // 商品一覧取得
+       
+        $items = Item::paginate(10);
+
+        $categorys = CategoryConst::CATEGORYS;
+        $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
+        $sizes = SizeConst::SIZES;
+        return view('home.boys_list',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
+    }
+
+    public function girls_list()
+    {
+        // 商品一覧取得
+       
+        $items = Item::paginate(10);
+
+        $categorys = CategoryConst::CATEGORYS;
+        $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
+        $sizes = SizeConst::SIZES;
+        return view('home.girls_list',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
+    }
+
 
     public function add()
     {

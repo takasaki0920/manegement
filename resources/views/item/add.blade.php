@@ -24,22 +24,34 @@
 
                         <div class="form-group">
                             <label for="detail">商品情報 *必須</label>
-                            <textarea type="text" class="form-control" id="datall" name="detail" placeholder="詳細情報"></textarea>
+                            <textarea type="text" class="form-control" id="detail" name="detail" placeholder="詳細情報"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="size">サイズ *必須</label>
-                            <input type="text" class="form-control" id="size" name="size" placeholder="サイズ">
+                            <label for="size">サイズ</label>
+                            <select class="form-select" name="size" id="floatingSelect" aria-label="Floating label select example">
+                            @foreach($sizes as $key => $size)
+                                <option value="{{$key}}">{{$size['height']}}</option>
+                            @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="item_category">アイテムカテゴリー *必須</label>
-                            <input type="text" class="form-control" id="item_category" name="item_category" placeholder="アイテムカテゴリー">
+                            <label for="item_category">アイテムカテゴリー</label>
+                            <select class="form-select" name="item_category" id="floatingSelect" aria-label="Floating label select example">
+                            @foreach($item_categorys as $key => $item_category)
+                                <option value="{{$key}}">{{$item_category['item_category']}}</option>
+                            @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="category">カテゴリー *必須</label>
-                            <input type="text" class="form-control" id="category" name="category" placeholder="カテゴリー">
+                            <label for="category">カテゴリー</label>
+                            <select class="form-select" name="category" id="floatingSelect" aria-label="Floating label select example">
+                            @foreach($categorys as $key => $category)
+                                <option value="{{$key}}">{{$category['category']}}</option>
+                            @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
@@ -50,6 +62,11 @@
                         <div class="form-group">
                             <label for="stock">初期在庫 *必須</label>
                             <input type="text" class="form-control" id="stock" name="stock" placeholder="登録在庫">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="stock">商品コード *必須</label>
+                            <input type="text" class="form-control" id="item_code" name="item_code" placeholder="商品コード">
                         </div>
 
                         <div class="form-group">

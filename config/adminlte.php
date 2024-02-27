@@ -298,18 +298,23 @@ return [
         ],
         [
             'text' => 'Goods',
-            'url'  => 'items',
+            'url'  => 'home/goods_list',
             'icon' => 'fas fa-gift',
         ],
         [
             'text' => 'Boy',
-            'url'  => 'items',
+            'url'  => 'home/boys_list',
             'icon' => 'fas fa-star',
         ],
         [
             'text' => 'Girl',
-            'url'  => 'items',
+            'url'  => 'home/girls_list',
             'icon' => 'fas fa-star',
+        ],
+        [
+            'text' => '商品管理システム',
+            'url'  => 'item/index',
+            'icon' => 'fas fa-info',
         ],
         [
             'text' => '社員管理システム',

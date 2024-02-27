@@ -15,6 +15,7 @@ class Item extends Model
         'user_id',
         'image',
         'name',
+        'item_code',
         'detail',
         'size',
         'item_category',

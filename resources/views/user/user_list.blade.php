@@ -4,9 +4,6 @@
 
 <h3 class="text-center pt-5 pb-5 ">従業員一覧画面</h3> 
 
-<div class="text-center pb-5">
-    <p><a href="user_list" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover fs-6">全て表示する</a></p>
-</div>
 
 <!-- 従業員リスト -->
 <div class="px-5 bg mx-5 bg pb-5">
@@ -18,7 +15,6 @@
 @endif
 
     <table class="table table-bordered">
-    
         <thead >
             <tr class="table-primary text-center">
                 <th>ID</th>

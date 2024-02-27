@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned()->index();
+            $table->string('item_code',50);
             $table->string('image');
             $table->string('name', 100);
             $table->string('detail', 500);
