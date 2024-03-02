@@ -7,6 +7,7 @@ use App\Models\Item;
 use App\Consts\CategoryConst;
 use App\Consts\SizeConst;
 use App\Consts\ItemCategoryConst;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -46,11 +47,13 @@ class HomeController extends Controller
     {
         // 商品一覧取得
        
-        $items = Item::paginate(10);
+        $items = Item::where('category','1')->paginate(10);
 
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
+        
+
         return view('home.goods_list',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
     }
 
@@ -58,7 +61,7 @@ class HomeController extends Controller
     {
         // 商品一覧取得
        
-        $items = Item::paginate(10);
+        $items = Item::where('category','2')->paginate(10);
 
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
@@ -70,7 +73,7 @@ class HomeController extends Controller
     {
         // 商品一覧取得
        
-        $items = Item::paginate(10);
+        $items = Item::where('category','3')->paginate(10);
 
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
@@ -79,8 +82,18 @@ class HomeController extends Controller
     }
 
 
-    public function add()
+    public function detail(Request $request)
     {
-        return view('home');
+        $item = Item::find($request->id);
+
+        $categorys = CategoryConst::CATEGORYS;
+        $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
+        $sizes = SizeConst::SIZES;
+        return view('home.detail', ['item' => $item, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
+    }
+
+    public function search(Request $request)
+    {
+        
     }
 }

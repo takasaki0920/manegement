@@ -3,7 +3,7 @@
 @section('title', '女の子商品一覧')
 
 @section('content_header')
-    <h1>女の子関連商品一覧</h1>
+    <h1 class="pt-3 pb-3">女の子関連商品一覧</h1>
     @stop
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">商品一覧</h3>
+                    <h1 class="card-title">商品一覧</h1>
                     
                 </div>
                 <div class="card-body table-responsive p-0">
@@ -27,6 +27,7 @@
                                 <th>カテゴリー</th>
                                 <th>価格</th>
                                 <th>在庫</th>
+                                <th>&ensp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,8 +36,11 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>
+                                        @if(!empty($item->image))
                                         <img src="{{ asset($item->image) }}" style="width: 100px; height:100px;">
-                                    </td>
+                                        @else
+                                        <img src="{{ asset('img/no_image.png') }}" style="width: 100px; height:100px;">
+                                        @endif                                    </td>
                                     <td>{{ $item->detail }}</td>
                                     <td>
                                     @if($sizes[ $item->size])
@@ -55,6 +59,9 @@
                                     </td>
                                     <td>{{ $item->price }}</td>
                                     <td>{{ $item->stock }}</td>
+                                    <td class="table-text text-center">
+                                            <a href="detail/{{ $item->id }}">>>詳細</a> 
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

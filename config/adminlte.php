@@ -292,7 +292,12 @@ return [
     'menu' => [
         
         [
-            'text' => 'Baby',
+            'text' => 'Home',
+            'url'  => '/',
+            'icon' => 'fa-solid fa-house',
+        ],
+        [
+            'text' => 'All item',
             'url'  => 'home/all_item',
             'icon' => 'fas fa-baby-carriage',
         ],
@@ -311,6 +316,11 @@ return [
             'url'  => 'home/girls_list',
             'icon' => 'fas fa-star',
         ],
+        // [
+        //     'text' => '商品検索',
+        //     'url'  => 'home/search',
+        //     'icon' => '',
+        // ],
         [
             'text' => '商品管理システム',
             'url'  => 'item/index',

@@ -1,10 +1,12 @@
 @extends('adminlte::page')
 
+@section('title', '従業員編集画面')
+
 @section('content')
         
 
 <div class="center-block">
-    <h2 class="text-center pt-5 mb-5">従業員編集画面</h2>
+    <h1 class="text-center pt-5 mb-5">従業員編集画面</h1>
     
     <div class="card mx-auto" style="width: 35rem">
     

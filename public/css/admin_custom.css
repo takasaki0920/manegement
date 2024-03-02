@@ -12,3 +12,28 @@
     font-weight: bold;
     font-family: 'Courier New', Courier, monospace;
 }
+
+p{
+    font-size: 22px;
+}
+
+label{
+    font-size: 25px;
+}
+
+h1{
+    font-weight: bold;
+}
+
+th{
+    font-size: 25px;
+}
+
+td{
+    font-size: 22px;
+}
+
+a{
+    color: black;
+}
+

@@ -2,16 +2,26 @@
 
 @section('title', '商品一覧')
 
-@section('content_header')
-    <h1 class="text-center pt-5 mb-5">商品一覧</h1>
-@stop
-
 @section('content')
+
+
+<h1 class="text-center pt-5 mb-5">商品一覧</h1>
+
+
+    <!-- 検索機能ここから -->
+<div class="mb-3">
+  <form action="{{ route('item.index') }}" method="GET">
+  @csrf
+    <input type="text" name="keyword">
+    <input type="submit" value="検索">
+  </form>
+</div>
+
     <div class="row ">
         <div class="col-12">
             <div class="card text-center">
                 <div class="card-header">
-                    <h3 class="card-title">商品一覧</h3>
+                   
                     @if(session('message'))
                         <div class="alert alert-success" role="alert">
                             {{ session('message') }}
@@ -48,7 +58,12 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>
+                                        @if(!empty($item->image))
                                         <img src="{{ asset($item->image) }}" style="width: 100px; height:100px;">
+                                        @else
+                                        <img src="{{ asset('img/no_image.png') }}" style="width: 100px; height:100px;">
+                                        @endif
+                                        
                                     </td>
                                     <td>{{ $item->detail }}</td>
                                     <td>

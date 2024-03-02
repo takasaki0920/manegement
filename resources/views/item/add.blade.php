@@ -1,8 +1,11 @@
 @extends('adminlte::page')
 
+@section('title', '商品登録画面')
+
 @section('content')
     <div class="row">
         <div class="col-md-10">
+        <h1>商品登録画面</h1>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -14,6 +17,7 @@
             @endif
 
             <div class="card card-primary">
+                
                 <form method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">

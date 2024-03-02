@@ -1,11 +1,13 @@
 @extends('adminlte::page')
 
+@section('title', '商品編集画面')
+
 @section('content')
         
 
 <div class="center-block">
-    <h2 class="text-center pt-5 mb-5">商品編集画面</h2>    
-    <!-- <div class="col-md-10 mx-auto">
+    <h1 class="text-center pt-5 mb-5">商品編集画面</h1>
+    <div class="col-md-10 mx-auto">
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -14,7 +16,7 @@
                 @endforeach
                 </ul>
             </div>
-        @endif -->
+        @endif
 
         <div class="card card-primary">
             <form action="{{ url('item/update/'.$item->id) }}" method="POST" >

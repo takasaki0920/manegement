@@ -16,7 +16,7 @@ class UserController extends Controller
     {
 
         // $role = Auth::user()->role;
-        // true or false
+        // // true or false
         // $isAdmin = $role == '1';
 
         
