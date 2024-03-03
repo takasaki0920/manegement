@@ -11,7 +11,7 @@
 
     <div class="row row-cols-1 row-cols-md-2 g-4">
         <div class="col">
-            <a href="{{URL::to('home/all_item')}}">
+            <a href="{{URL::to('home/all_item')}}" class="home_click">
             <div class="card h-100">
                 <img src="{{ asset('img/baby用品画像3.jpg') }}" class="card-img-top" alt="...">
                 
@@ -23,7 +23,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{URL::to('home/goods_list')}}">
+            <a href="{{URL::to('home/goods_list')}}" class="home_click">
             <div class="card h-100">
                 <img src="{{ asset('img/baby用品画像2.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -34,7 +34,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{URL::to('home/boys_list')}}">
+            <a href="{{URL::to('home/boys_list')}}" class="home_click">
             <div class="card h-100">
                 <img src="{{ asset('img/Boy画像.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -45,7 +45,7 @@
             </a>
         </div>
         <div class="col">
-            <a href="{{URL::to('home/girls_list')}}">
+            <a href="{{URL::to('home/girls_list')}}" class="home_click">
             <div class="card h-100 ">
                 <img src="{{ asset('img/Girl画像.jpg') }}" class="card-img-top" alt="...">
                 <div class="card-body">

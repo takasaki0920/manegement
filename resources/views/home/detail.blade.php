@@ -21,7 +21,11 @@
                 
                     @csrf
                     <div class="card-body">
-                        <img src="{{ asset($item->image) }}" style="width: 600px; height:500px;">
+                        @if(!empty($item->image))
+                        <img src="{{ asset($item->image) }}" style="height:20vw">
+                        @else
+                        <img src="{{ asset('img/no_image.png') }}" style="height:20vw">
+                        @endif   
                         <div class="form-group">
                             <label for="name">商品ID:{{$item->id}} </label>
                         </div>

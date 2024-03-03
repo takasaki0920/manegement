@@ -33,22 +33,32 @@ class HomeController extends Controller
 
     public function all_item()
     {
-        // 商品一覧取得
-       
-        $items = Item::paginate(10);
-
+        // すべての商品一覧を１０件ずつ取得
+        $items = Item::paginate(12);
+        // 数字ー＞文字表示用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
+
         return view('home.all_item',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
+    }
+    public function item()
+    {
+        // すべての商品一覧を１０件ずつ取得
+        $items = Item::paginate(12);
+        // 数字ー＞文字表示用
+        $categorys = CategoryConst::CATEGORYS;
+        $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
+        $sizes = SizeConst::SIZES;
+
+        return view('home.item',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
     }
 
     public function goods_list()
     {
-        // 商品一覧取得
-       
-        $items = Item::where('category','1')->paginate(10);
-
+        // 商品カテゴリーがGoodsの一覧を１０件ずつ取得
+        $items = Item::where('category','1')->paginate(12);
+        // 数字ー＞文字表示用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
@@ -59,10 +69,9 @@ class HomeController extends Controller
 
     public function boys_list()
     {
-        // 商品一覧取得
-       
-        $items = Item::where('category','2')->paginate(10);
-
+        // 商品カテゴリーがBoysの一覧を１０件ずつ取得
+        $items = Item::where('category','2')->paginate(12);
+        // 数字ー＞文字表示用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
@@ -71,10 +80,9 @@ class HomeController extends Controller
 
     public function girls_list()
     {
-        // 商品一覧取得
-       
-        $items = Item::where('category','3')->paginate(10);
-
+        // 商品カテゴリーがGirlsの一覧を１０件ずつ取得
+        $items = Item::where('category','3')->paginate(12);
+        // 数字ー＞文字表示用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
@@ -82,18 +90,20 @@ class HomeController extends Controller
     }
 
 
-    public function detail(Request $request)
+    public function detail($id)
     {
-        $item = Item::find($request->id);
-
+        //requestで受け取ったidのレコード1件取得
+        $item = Item::find($id);
+        // 数字ー＞文字表示用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
+
         return view('home.detail', ['item' => $item, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
     }
 
     public function search(Request $request)
     {
-        
+
     }
 }

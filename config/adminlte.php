@@ -302,6 +302,11 @@ return [
             'icon' => 'fas fa-baby-carriage',
         ],
         [
+            'text' => 'Item',
+            'url'  => 'home/item',
+            'icon' => 'fas fa-baby-carriage',
+        ],
+        [
             'text' => 'Goods',
             'url'  => 'home/goods_list',
             'icon' => 'fas fa-gift',
