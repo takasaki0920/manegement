@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,7 @@ Route::get('home/boys_list', [App\Http\Controllers\HomeController::class, 'boys_
 Route::get('home/girls_list', [App\Http\Controllers\HomeController::class, 'girls_list'])->name('home.girls_list');
 Route::get('home/detail/{id}', [App\Http\Controllers\HomeController::class, 'detail'])->name('home.detail');
 Route::get('home/search',[\App\Http\Controllers\HomeController::class,'search'])->name('home.search');
-Route::get('home/item', [App\Http\Controllers\HomeController::class, 'item'])->name('home.item');
+
 
 
 // 管理者 = アイテム管理
