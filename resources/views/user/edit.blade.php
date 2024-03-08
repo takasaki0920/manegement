@@ -13,7 +13,7 @@
 
         <!-- 従業員情報編集画面 -->
         <form  action="{{ url('user/update/'.$user->id) }}" method="POST" >
-            {{ csrf_field() }}
+            @csrf
 
             <div class="form-group">
                 

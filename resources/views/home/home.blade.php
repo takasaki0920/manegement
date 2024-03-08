@@ -10,6 +10,7 @@
     <p>Welcome to BabyBoon.</p>
 
     <div class="row row-cols-1 row-cols-md-2 g-4">
+        @csrf
         <div class="col">
             <a href="{{URL::to('home/all_item')}}" class="home_click">
             <div class="card h-100">
