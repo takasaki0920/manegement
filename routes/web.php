@@ -40,8 +40,10 @@ Route::prefix('item')->group(function () {
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add'])->name('item.add');
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::get('/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit'])->name("item.edit");
-    Route::post('/update/{id}', [App\Http\Controllers\ItemController::class, 'update']);
-    Route::post('/delete/{id}', [App\Http\Controllers\ItemController::class, 'delete']);
+    Route::post('/update/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name("item.update");
+    Route::post('/delete/{id}', [App\Http\Controllers\ItemController::class, 'delete'])->name("item.delete");;
+    Route::get('/search', [App\Http\Controllers\ItemController::class, 'search'])->name("item.search");;
+    
 });
 
 

@@ -17,8 +17,8 @@
             <img src="{{ asset('img/no_image.png') }}" style="height:20vw">
             @endif        
             <div class="card-body">
-                <h3 class="card-title">{{ $item->name }}</h3>
-                <p class="card-text">{{ $item->detail }}</p>
+                <h3 class="card-title">{{ Str::limit($item->name,20) }}</h3>
+                <p class="card-text">{{ Str::limit($item->detail,50) }}</p>
                 <p class="card-text">定価: {{ $item->price }} </p>
             </div>
             <div class="card-footer">

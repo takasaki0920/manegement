@@ -39,18 +39,6 @@ class ItemController extends Controller
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
 
-        /* キーワードから検索処理 */
-        // $keyword = $request->input('keyword');
-
-        // if(!empty($keyword)) {//$keyword　が空ではない場合、検索処理を実行します
-        //     $items->where('name', 'LIKE', "%{$keyword}%")
-        //     ->orwhereHas('', function ($query) use ($keyword) {
-        //         $query->where('detail', 'LIKE', "%{$keyword}%");
-        //     })->get();
-
-        // }
-
-
 
         return view('item.index',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
 
@@ -82,24 +70,24 @@ class ItemController extends Controller
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
-                'name' => 'required|string|max:100', 
-                'detail' =>'required|max:500',
-                'image' =>'nullable|image',
-                'price' =>'required|integer',
-                'stock' =>'required|integer',
-                'item_code' =>'required|string',
-            ],
-            [
-                'name.required' => '＊商品名を入力してください。',
-                'name.max' => '＊商品名は100文字までです。',
-                'detail.required' => '＊商品情報を入力してください。',
-                'detail.max' => '＊商品情報は500文字までです。',
-                'price.required' => '＊金額を入力してください。',
-                'price.integer' => '＊金額を数字で入力してください。',
-                'stock.required' => '＊在庫を入力してください。',
-                'stock.integer' => '＊数字を入力してください。',
-                'item_code.required' => '＊商品番号を入力してください。',
-            ]);
+                    'name' => 'required|string|max:100', 
+            'detail' =>'required|max:500',
+            'image' =>'nullable|image',
+            'price' =>'required|integer',
+            'stock' =>'required|integer',
+            'item_code' =>'required|string',
+        ],
+        [
+            'name.required' => '＊商品名を入力してください。',
+            'name.max' => '＊商品名は100文字までです。',
+            'detail.required' => '＊商品情報を入力してください。',
+            'detail.max' => '＊商品情報は500文字までです。',
+            'price.required' => '＊金額を入力してください。',
+            'price.integer' => '＊金額を数字で入力してください。',
+            'stock.required' => '＊在庫を入力してください。',
+            'stock.integer' => '＊数字を入力してください。',
+            'item_code.required' => '＊商品番号を入力してください。',
+        ]);
 
             $path = null;
             if($request->file("image")){
@@ -207,5 +195,22 @@ class ItemController extends Controller
 
         return redirect()->route('item.index');
     }
+
+    public function search(Request $request)
+{
+    $word = $request->get('word');//送信されたキーワードをゲット
+    $query = Item::query();//Articleモデルのクエリビルダを開始
+    if (isset($word)) {
+        $array_words = preg_split('/\s+/ui', $word, -1, PREG_SPLIT_NO_EMPTY);//スペース区切りでキーワードを配列に変換
+        foreach ($array_words as $w) {
+            $escape_word = addcslashes($w, '\\_%');//エスケープ処理
+            $query = $query->where(DB::raw("CONCAT(name, ' ', detail)"), 'like', '%' . $escape_word . '%');//like検索
+        }
+    }
+
+    $articles = $query->get();//クエリビルダーの結果をゲット($wordがない場合全て取得)
+
+    return view('item.index',['articles' => $articles]);
+}
 
 }

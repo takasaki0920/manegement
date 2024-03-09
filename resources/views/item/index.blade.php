@@ -9,13 +9,8 @@
 
 
     <!-- 検索機能ここから -->
-<div class="mb-3">
-  <form action="{{ route('item.index') }}" method="GET">
-  @csrf
-    <input type="text" name="keyword">
-    <input type="submit" value="検索">
-  </form>
-</div>
+
+
 
     <div class="row ">
         <div class="col-12">
