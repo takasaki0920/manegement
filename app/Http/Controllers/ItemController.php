@@ -86,8 +86,19 @@ class ItemController extends Controller
                 'detail' =>'required|max:500',
                 'image' =>'nullable|image',
                 'price' =>'required|integer',
-                'stock' =>'required|max:500',
+                'stock' =>'required|integer',
                 'item_code' =>'required|string',
+            ],
+            [
+                'name.required' => '＊商品名を入力してください。',
+                'name.max' => '＊商品名は100文字までです。',
+                'detail.required' => '＊商品情報を入力してください。',
+                'detail.max' => '＊商品情報は500文字までです。',
+                'price.required' => '＊金額を入力してください。',
+                'price.integer' => '＊金額を数字で入力してください。',
+                'stock.required' => '＊在庫を入力してください。',
+                'stock.integer' => '＊数字を入力してください。',
+                'item_code.required' => '＊商品番号を入力してください。',
             ]);
 
             $path = null;
@@ -142,21 +153,21 @@ class ItemController extends Controller
             'detail' =>'required|max:500',
             'image' =>'nullable|image',
             'price' =>'required|integer',
-            'stock' =>'required|max:500',
+            'stock' =>'required|integer',
             'item_code' =>'required|string',
         ],
         [
             'name.required' => '＊商品名を入力してください。',
             'name.max' => '＊商品名は100文字までです。',
-            'detail.unique' => '＊商品情報を入力してください。',
+            'detail.required' => '＊商品情報を入力してください。',
             'detail.max' => '＊商品情報は500文字までです。',
             'price.required' => '＊金額を入力してください。',
-            'price' => '＊金額を数字で入力してください。',
+            'price.integer' => '＊金額を数字で入力してください。',
             'stock.required' => '＊在庫を入力してください。',
-            'email.max' => '＊名前は255文字までです。',
-            'email' => '＊有効なメールアドレスを入力してください',
-
+            'stock.integer' => '＊数字を入力してください。',
+            'item_code.required' => '＊商品番号を入力してください。',
         ]);
+
         $path = null;
         if($request->file("image")){
             $dir = "items";

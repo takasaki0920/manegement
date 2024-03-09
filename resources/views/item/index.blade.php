@@ -56,7 +56,7 @@
                             @foreach ($items as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->name }}</td>
+                                    <td>{{ Str::limit($item->name,20) }}</td>
                                     <td>
                                         @if(!empty($item->image))
                                         <img src="{{ asset($item->image) }}" style="width: 100px; height:100px;">
@@ -65,7 +65,7 @@
                                         @endif
                                         
                                     </td>
-                                    <td>{{ $item->detail }}</td>
+                                    <td>{{ Str::limit($item->detail,20) }}</td>
                                     <td>
                                     @if($sizes[ $item->size])
                                     <p>{{$sizes[$item -> size]['height']}}</p> 
