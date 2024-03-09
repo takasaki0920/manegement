@@ -66,7 +66,7 @@ class UserController extends Controller
             'role' => !$request->role ? 0 : 1 ,
         ]);
         
-        return redirect()->route('user_list') -> with('message','✔︎ 更新できました。') ; //ページのURLを変更したので、古いURLを自動的に新しいURLに転送する
+        return redirect()->route('user.user_list') -> with('message','✔︎ 更新できました。') ; //ページのURLを変更したので、古いURLを自動的に新しいURLに転送する
     
     }
 
@@ -77,7 +77,7 @@ class UserController extends Controller
         $user = User::find($id); //Membersデータベースから該当のIDを探す
         $user -> delete(); //該当のID情報を消去する
 
-        return redirect()->route('user_list')->with('message', '✔︎ 削除できました。') ; //ページのURLを変更したので、古いURLを自動的に新しいURLに転送する
+        return redirect()->route('user.user_list')->with('message', '✔︎ 削除できました。') ; //ページのURLを変更したので、古いURLを自動的に新しいURLに転送する
     } 
     
 }

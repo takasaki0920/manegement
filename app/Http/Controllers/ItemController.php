@@ -40,15 +40,15 @@ class ItemController extends Controller
         $sizes = SizeConst::SIZES;
 
         /* キーワードから検索処理 */
-        $keyword = $request->input('keyword');
+        // $keyword = $request->input('keyword');
 
-        if(!empty($keyword)) {//$keyword　が空ではない場合、検索処理を実行します
-            $items->where('name', 'LIKE', "%{$keyword}%")
-            ->orwhereHas('item_category', function ($query) use ($keyword) {
-                $query->where('detail', 'LIKE', "%{$keyword}%");
-            })->get();
+        // if(!empty($keyword)) {//$keyword　が空ではない場合、検索処理を実行します
+        //     $items->where('name', 'LIKE', "%{$keyword}%")
+        //     ->orwhereHas('', function ($query) use ($keyword) {
+        //         $query->where('detail', 'LIKE', "%{$keyword}%");
+        //     })->get();
 
-        }
+        // }
 
 
 
@@ -82,7 +82,12 @@ class ItemController extends Controller
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
-                'name' => 'required|max:100',
+                'name' => 'required|string|max:100', 
+                'detail' =>'required|max:500',
+                'image' =>'nullable|image',
+                'price' =>'required|integer',
+                'stock' =>'required|max:500',
+                'item_code' =>'required|string',
             ]);
 
             $path = null;
@@ -133,12 +138,24 @@ class ItemController extends Controller
     public function update(Request $request,$id) //idの情報とinputで入力された$request情報を持ってくる
     {
         $request->validate([
-            'name' => 'required|string|max:25', 
+            'name' => 'required|string|max:100', 
             'detail' =>'required|max:500',
             'image' =>'nullable|image',
             'price' =>'required|integer',
             'stock' =>'required|max:500',
             'item_code' =>'required|string',
+        ],
+        [
+            'name.required' => '＊商品名を入力してください。',
+            'name.max' => '＊商品名は100文字までです。',
+            'detail.unique' => '＊商品情報を入力してください。',
+            'detail.max' => '＊商品情報は500文字までです。',
+            'price.required' => '＊金額を入力してください。',
+            'price' => '＊金額を数字で入力してください。',
+            'stock.required' => '＊在庫を入力してください。',
+            'email.max' => '＊名前は255文字までです。',
+            'email' => '＊有効なメールアドレスを入力してください',
+
         ]);
         $path = null;
         if($request->file("image")){
