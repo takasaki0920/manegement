@@ -5,8 +5,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-10">
-        <h1>商品登録画面</h1>
-
+        <h1 class="text-center pt-5 mb-5">商品登録画面</h1>
+        <p class="text-right"><a href="item/index">>>一覧へ戻る</a></p>
             <div class="card card-primary">
                 
                 <form method="POST" enctype="multipart/form-data">

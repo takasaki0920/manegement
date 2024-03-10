@@ -18,13 +18,12 @@
 
             <div class="center-block">
             <h1 class="text-center pt-5 mb-5">商品詳細</h1>
-                
-                    @csrf
+                <button class="rounded-md bg-gray-800 text-black px-4 py-2" onClick="history.back();">戻る</button>                    @csrf
                     <div class="card-body">
                         @if(!empty($item->image))
                         <img src="{{ asset($item->image) }}" style="height:20vw">
                         @else
-                        <img src="{{ asset('img/no_image.png') }}" style="height:20vw">
+                        <img src="{{ asset('img/baby.png') }}" style="height:20vw">
                         @endif   
                         <div class="form-group">
                             <label for="name">商品ID:{{$item->id}} </label>

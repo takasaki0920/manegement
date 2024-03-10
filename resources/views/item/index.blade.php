@@ -6,12 +6,6 @@
 
 
 <h1 class="text-center pt-5 mb-5">商品一覧</h1>
-
-
-    <!-- 検索機能ここから -->
-
-
-
     <div class="row ">
         <div class="col-12">
             <div class="card text-center">
@@ -56,7 +50,7 @@
                                         @if(!empty($item->image))
                                         <img src="{{ asset($item->image) }}" style="width: 100px; height:100px;">
                                         @else
-                                        <img src="{{ asset('img/no_image.png') }}" style="width: 100px; height:100px;">
+                                        <img src="{{ asset('img/baby.png') }}" style="width: 100px; height:100px;">
                                         @endif
                                         
                                     </td>

@@ -14,7 +14,7 @@
             @if(!empty($item->image))
             <img src="{{ asset($item->image) }}" style="height:20vw">
             @else
-            <img src="{{ asset('img/no_image.png') }}" style="height:20vw">
+            <img src="{{ asset('img/baby.png') }}" style="height:20vw">
             @endif        
             <div class="card-body">
                 <h3 class="card-title">{{ Str::limit($item->name,20) }}</h3>
