@@ -87,7 +87,7 @@ class ItemController extends Controller
             'image' =>'nullable|image',
             'price' =>'required|integer',
             'stock' =>'required|integer',
-            'item_code' =>'required|string',
+            'item_code' =>'required|string|unique:items,item_code',
         ],
         [
             'name.required' => '＊商品名を入力してください。',
@@ -99,6 +99,7 @@ class ItemController extends Controller
             'stock.required' => '＊在庫を入力してください。',
             'stock.integer' => '＊数字を入力してください。',
             'item_code.required' => '＊商品番号を入力してください。',
+            'item_code.unique' => '＊使用している商品コードです。',
         ]);
 
             $path = null;

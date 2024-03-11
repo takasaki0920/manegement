@@ -26,7 +26,7 @@
 
                         <div class="form-group">
                             <label for="detail">商品情報 *必須</label>
-                            <textarea type="text" class="form-control" id="detail" name="detail" placeholder="詳細情報"></textarea>
+                            <textarea type="text" class="form-control" id="detail" name="detail" placeholder="詳細情報">{{ old('name') }}</textarea>
                             <div class="text-danger">
                             @if($errors->has('detail'))
                                 @foreach($errors->get('detail') as $message)
@@ -65,7 +65,7 @@
 
                         <div class="form-group">
                             <label for="price">価格 *必須</label>
-                            <input type="text" class="form-control" id="price" name="price" placeholder="価格">
+                            <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="価格">
                             <div class="text-danger">
                             @if($errors->has('price'))
                                 @foreach($errors->get('price') as $message)
@@ -77,7 +77,7 @@
 
                         <div class="form-group">
                             <label for="stock">初期在庫 *必須</label>
-                            <input type="text" class="form-control" id="stock" name="stock" placeholder="登録在庫">
+                            <input type="text" class="form-control" id="stock" name="stock" value="{{ old('stock') }}" placeholder="登録在庫">
                             <div class="text-danger">
                             @if($errors->has('stock'))
                                 @foreach($errors->get('stock') as $message)
@@ -89,7 +89,7 @@
 
                         <div class="form-group">
                             <label for="stock">商品コード *必須</label>
-                            <input type="text" class="form-control" id="item_code" name="item_code" placeholder="商品コード">
+                            <input type="text" class="form-control" id="item_code" name="item_code" value="{{ old('item_code') }}" placeholder="商品コード">
                             <div class="text-danger">
                             @if($errors->has('item_code'))
                                 @foreach($errors->get('item_code') as $message)

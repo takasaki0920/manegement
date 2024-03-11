@@ -64,7 +64,7 @@
                     </div>
                     <div class="form-group">
                         <label for="price">価格 *必須</label>
-                        <input type="text" class="form-control" id="price" name="price" value="{{$item->price}}">
+                        <input type="number" min="1" max="100" class="form-control" id="price" name="price" value="{{$item->price}}">
                         <div class="text-danger">
                             @if($errors->has('price'))
                                 @foreach($errors->get('price') as $message)
@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label for="stock">初期在庫 *必須</label>
-                        <input type="text" class="form-control" id="stock" name="stock" value="{{$item->stock}}">
+                        <input type="number" class="form-control" min="1" max="100" id="stock" name="stock" value="{{$item->stock}}">
                         <div class="text-danger">
                             @if($errors->has('stock'))
                                 @foreach($errors->get('stock') as $message)
