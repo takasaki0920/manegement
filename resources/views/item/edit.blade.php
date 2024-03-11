@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                         <label for="stock">初期在庫 *必須</label>
-                        <input type="number" class="form-control" min="1" max="100" id="stock" name="stock" value="{{$item->stock}}">
+                        <input type="number" min="1" max="100" class="form-control" id="stock" name="stock" value="{{$item->stock}}">
                         <div class="text-danger">
                             @if($errors->has('stock'))
                                 @foreach($errors->get('stock') as $message)
