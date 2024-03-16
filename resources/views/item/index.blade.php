@@ -10,12 +10,23 @@
         <div class="col-12">
             <div class="card text-center">
                 <div class="card-header">
-                   
+                    <!-- 検索機能 -->
+                    <div>
+                        <form class=" mb-2" action="{{ route('item.index') }}" method="GET">
+                            @csrf
+                            <input type="text" name="keyword" value="{{ $keyword }}" style="width:30%; height:50px;" placeholder="ID OR 商品名 OR 商品情報で検索">
+                            <input type="submit" value="検索" style="width:10%; height:50px;">
+                        </form>
+                    </div>
+                    
+                    <!-- 更新・削除　メッセージ -->
                     @if(session('message'))
                         <div class="alert alert-success" role="alert">
                             {{ session('message') }}
                         </div>
                     @endif
+                    
+                    <!-- 画面タイトル -->
                     <div class="card-tools">
                         <div class="input-group input-group-sm">
                             <div class="input-group-append">
@@ -24,6 +35,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 商品一覧画面 ここから　-->
                 <div class="card-body table-responsive p-0">
                     <table class="table table-hover text-nowrap">
                         <thead>

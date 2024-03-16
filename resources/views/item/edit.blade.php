@@ -8,7 +8,7 @@
 <div class="center-block">
     <h1 class="text-center pt-5 mb-5">商品編集画面</h1>
     <div class="col-md-10 mx-auto">
-    <button class="rounded-md bg-gray-800 text-black px-4 py-2" onClick="history.back();">前のページに戻る</button>                    @csrf
+    <button class="btn btn-default mb-2" onClick="history.back();">前のページに戻る</button>                    @csrf
         <div class="card card-primary">
             <form action="{{ url('item/update/'.$item->id) }}" method="POST" enctype="multipart/form-data" >
                 @csrf

@@ -11,9 +11,10 @@ use App\Consts\SizeConst;
 use App\Consts\ItemCategoryConst;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
-
 use function Ramsey\Uuid\v1;
 
+
+// 商品管理用コントローラー
 class ItemController extends Controller
 {
     /**
@@ -28,39 +29,43 @@ class ItemController extends Controller
     }
 
     /**
-     * 商品一覧
+     * 管理用商品一覧
      */
     public function index(Request $request)
     {
-        // 商品一覧取得
-        $items = Item::paginate(10);
-
+        // 商品一覧取得（１０件毎）
+        // $items = Item::get();
+        
+        // 各ドロップダウンリストの読み込み用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
 
-        /* キーワードから検索処理 */
-        // $keyword = $request->input('keyword');
+        $keyword = $request->input('keyword');
 
-        // if(!empty($keyword)) {//$keyword　が空ではない場合、検索処理を実行します
-        //     $items->where('name', 'LIKE', "%{$keyword}%")
-        //     ->orwhereHas('', function ($query) use ($keyword) {
-        //         $query->where('detail', 'LIKE', "%{$keyword}%");
-        //     })->get();
+        $query = Item::query();
 
-        // }
+        if(!empty($keyword)) {
+            $query->where('id', 'LIKE', "{$keyword}")
+                ->orWhere('name', 'LIKE', "%{$keyword}%")
+                ->orWhere('detail', 'LIKE', "%{$keyword}%");
+        }
 
+        $items = $query->paginate(10);
 
-
-        return view('item.index',[ 'items' => $items, 'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys]);
-
+        return view('item.index',[ 'items' => $items,  'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys, 'keyword' => $keyword]);
+         
     }
 
+    /**
+     * 編集画面
+     */
     public function edit($id)
     {
         //requestで受け取ったidのレコード1件取得
         $item = Item::find($id);
-        // 各項目の定数
+
+        // 各ドロップダウンリストの読み込み用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
@@ -73,7 +78,7 @@ class ItemController extends Controller
      */
     public function add(Request $request)
     {
-        // 各項目の定数
+        // 各ドロップダウンリストの読み込み用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
@@ -82,7 +87,7 @@ class ItemController extends Controller
         if ($request->isMethod('post')) {
             // バリデーション
             $this->validate($request, [
-                    'name' => 'required|string|max:100', 
+            'name' => 'required|string|max:100', 
             'detail' =>'required|max:500',
             'image' =>'nullable|image',
             'price' =>'required|integer',
