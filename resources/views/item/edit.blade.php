@@ -4,12 +4,16 @@
 
 @section('content')
         
-
+<!-- タイトル -->
 <div class="center-block">
     <h1 class="text-center pt-5 mb-5">商品編集画面</h1>
     <div class="col-md-10 mx-auto">
-    <button class="btn btn-default mb-2" onClick="history.back();">前のページに戻る</button>                    @csrf
+
+    <!-- 直前のページに戻るボタン -->
+    <button class="btn btn-default mb-2" onClick="history.back();">前のページに戻る</button>
         <div class="card card-primary">
+
+            <!-- 編集フォーム -->
             <form action="{{ url('item/update/'.$item->id) }}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <div class="card-body">
@@ -97,8 +101,13 @@
                     </div>
                     <div class="form-group">
                         <label for="image">画像 </label>
+                        <br>
+                             <!-- イメージ表示 -->
+                            @if(isset($item->image))
+                                <img src="{{ asset($item->image) }}" style="width:500px; height:500px">
+                            @endif  
                         <div class="col-md-6">
-                            <input id="image" type="file" name="image" >
+                            <input id="image" type="file" name="image">
                         </div>
                     </div>
                 </div>
@@ -107,6 +116,8 @@
                     <button type="submit" class="btn btn-primary">更新する</button>
                 </div>
             </form>
+            <!-- 編集フォーム終了 -->
+
             <!-- 商品削除ボタン -->
             <form action="{{ url('item/delete/'.$item->id) }}" method="POST">
             {{ csrf_field() }} 

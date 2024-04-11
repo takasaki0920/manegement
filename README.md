@@ -1,43 +1,40 @@
-## 商品管理システム
+# ベビー用商品管理システム
 
-### 環境構築手順
+## 概要
 
-* Gitクローン
-* .env.example をコピーして .env を作成
-* MySQLのデータベース作成（名前：item_management）
-* Macの場合 .env の DB_PASSWORD を root に修正（Windowsは修正不要）
+ベビー用品を扱う会社の商品の管理を行えます
+ ・商品の登録・編集・削除を行うことができます
+ ・従業員の登録・編集・削除を行うことができます
 
-    ```INI
-    DB_PASSWORD=root
-    ```
 
-* APP_KEY生成
+## 主な機能
+- ログイン・ログアウト機能
+- ホーム画面
+- 全商品一覧画面
+- 各カテゴリー（女の子・男の子・グッズ）毎の商品一覧画面
+- 商品の新規登録・編集・削除
+- 管理用検索枠
+- 従業員一覧画面
+- 従業員の新規登録・編集・削除
 
-    ```console
-    php artisan key:generate
-    ```
+## 開発環境
+```
+PHP 8.2.0
+MySQL 5.7.39
+Laravel 10.13.5
+```
+## 設計書
+[設計書ページへ]
 
-* Composerインストール
 
-    ```console
-    composer install
-    ```
+## システム閲覧
+[アプリケーションページへ]
+https://th-item-management-9685438fc650.herokuapp.com/
 
-* フロント環境構築
 
-    ```console
-    npm ci
-    npm run build
-    ```
+### テストアカウント情報
+```
+メールアドレス : test11@example.com
+パスワード : test1234
+```
 
-* マイグレーション
-
-    ```console
-    php artisan migrate
-    ```
-
-* 起動
-
-    ```console
-    php artisan serve
-    ```

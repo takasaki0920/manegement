@@ -33,24 +33,37 @@ class ItemController extends Controller
      */
     public function index(Request $request)
     {
-        // 商品一覧取得（１０件毎）
-        // $items = Item::get();
         
         // 各ドロップダウンリストの読み込み用
         $categorys = CategoryConst::CATEGORYS;
         $item_categorys = ItemCategoryConst::ITEMCATEGORYS;
         $sizes = SizeConst::SIZES;
 
+        // 検索用取得　[キーワード・プライスの最小値・最大値]
         $keyword = $request->input('keyword');
+        $min = $request->input('min');
+        $max = $request->input('max');
 
         $query = Item::query();
-
+        
+        // もし最小値に入っていたら
+        if(!empty($min)){
+            $query->where("price",">=",$min);
+        }
+        // もし最大値に入っていたら
+        if(!empty($max)){
+            $query->where("price","<=",$max);
+        }
+        // プライスの値を引き継いでキーワード検索
         if(!empty($keyword)) {
-            $query->where('id', 'LIKE', "{$keyword}")
+            $query->where(function($query) use ($keyword){
+                $query->where('id', 'LIKE', "{$keyword}")
                 ->orWhere('name', 'LIKE', "%{$keyword}%")
                 ->orWhere('detail', 'LIKE', "%{$keyword}%");
+            });
         }
 
+        // ページネーション
         $items = $query->paginate(10);
 
         return view('item.index',[ 'items' => $items,  'sizes' => $sizes, 'item_categorys' => $item_categorys, 'categorys' => $categorys, 'keyword' => $keyword]);
@@ -174,7 +187,9 @@ class ItemController extends Controller
             'item_code.required' => '＊商品番号を入力してください。',
         ]);
 
-        $path = null;
+        $item = Item::find($id) ; // 該当idの情報を探して$userに渡す
+
+        $path = $item->image;
         if($request->file("image")){
             $dir = "items";
             // アップロードされたファイル名を取得
@@ -188,7 +203,6 @@ class ItemController extends Controller
             $path = 'storage/' . $dir. '/'.$file_name;
         }
 
-        $item = Item::find($id) ; // 該当idの情報を探して$userに渡す
         $item -> update([  // $userに渡された情報に$requestで渡された情報を更新していく   
             'user_id' => Auth::user()->id,
             'name' => $request->name,

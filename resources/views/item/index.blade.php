@@ -4,7 +4,7 @@
 
 @section('content')
 
-
+<!-- タイトル -->
 <h1 class="text-center pt-5 mb-5">商品一覧</h1>
     <div class="row ">
         <div class="col-12">
@@ -14,8 +14,11 @@
                     <div>
                         <form class=" mb-2" action="{{ route('item.index') }}" method="GET">
                             @csrf
-                            <input type="text" name="keyword" value="{{ $keyword }}" style="width:30%; height:50px;" placeholder="ID OR 商品名 OR 商品情報で検索">
-                            <input type="submit" value="検索" style="width:10%; height:50px;">
+                            <input class="mx-3" type="text" name="keyword" value="{{ $keyword }}" style="width:30%; height:50px;" placeholder="ID OR 商品名 OR 商品情報で検索">
+                            <input type="number" name="min" value="" style="width:10%; height:50px;" placeholder="¥0">
+                            〜
+                            <input type="number" name="max" value="" style="width:10%; height:50px;" placeholder="最大金額">
+                            <input class="mx-3" type="submit" value="検索" style="width:10%; height:50px;">
                         </form>
                     </div>
                     
