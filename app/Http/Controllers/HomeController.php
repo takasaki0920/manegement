@@ -9,6 +9,8 @@ use App\Consts\SizeConst;
 use App\Consts\ItemCategoryConst;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Storage;
+
 class HomeController extends Controller
 {
     /**
@@ -29,6 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         return view('home.home');
     }
 

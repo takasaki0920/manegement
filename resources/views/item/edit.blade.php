@@ -102,10 +102,12 @@
                     <div class="form-group">
                         <label for="image">画像 </label>
                         <br>
-                             <!-- イメージ表示 -->
-                            @if(isset($item->image))
-                                <img src="{{ asset($item->image) }}" style="width:500px; height:500px">
-                            @endif  
+                            <!-- イメージ表示 -->
+                            @if(!empty($item->image))
+                                <img src="{{ asset($item->image) }}" style="width: 100px; height:100px;">
+                            @else
+                                <img src="{{ asset('img/baby.png') }}" style="width: 100px; height:100px;">
+                            @endif
                         <div class="col-md-6">
                             <input id="image" type="file" name="image">
                         </div>
