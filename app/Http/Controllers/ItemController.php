@@ -12,7 +12,7 @@ use App\Consts\ItemCategoryConst;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use function Ramsey\Uuid\v1;
-
+use Illuminate\Support\Facades\Storage;
 
 // 商品管理用コントローラー
 class ItemController extends Controller
@@ -122,6 +122,7 @@ class ItemController extends Controller
 
             $path = null;
             if($request->file("image")){
+
                 $dir = "items";
                 // アップロードされたファイル名を取得
                 $file_name = $request->file('image')->getClientOriginalName();
@@ -132,6 +133,8 @@ class ItemController extends Controller
 
                 // storage/items/{ファイル名}
                 $path = 'storage/' . $dir. '/'.$file_name;
+
+                
             }
             // 商品登録
             Item::create([

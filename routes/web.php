@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Auth;
 //     return view('welcome');
 // });
 
+// S3確認用ルート
+Route::view('upload', 'upload');
+Route::post('s3', [\App\Http\Controllers\S3Controller::class, 'uploadS3'])->name('s3');
+Route::view('download', 'download');
+Route::get('s3/down', [\App\Http\Controllers\S3Controller::class, 'downloadS3'])->name('ds3');
+
+
+// 認証ルート
 Auth::routes();
 
 // 利用者用
